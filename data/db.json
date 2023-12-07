@@ -1,0 +1,29 @@
+{
+  "post": [
+    {
+      "id": 1,
+      "author": "Dolly Parton",
+      "summary": "You can do anything you want to do as long as you keep a good attitude and keep working at it. But the second you give up, you’re screwed."
+    },
+    {
+      "id": 2,
+      "author": "Tessa Afshar",
+      "summary": "“We long for things that harm us and run from the things that grow and heal us. We think good is bad and bad is good.”"
+    },
+    {
+      "id": 4,
+      "author": "Israelmore A.",
+      "summary": "“No matter how short or long your journey to your accomplishment is, if you don't begin you can't get there. Beginning is difficult, but unavoidable!”"
+    },
+    {
+      "id": 5,
+      "author": "Steven Magee",
+      "summary": "“It is well known that staying slim and taking nutritional supplements leads to longevity. The Japanese are rarely fat and live long lives.”"
+    },
+    {
+      "author": "Supratim Das",
+      "summary": "“If the stairs feel long, focus on each step. Enjoy the climb, without fixating on the top.”",
+      "id": 6
+    }
+  ]
+}

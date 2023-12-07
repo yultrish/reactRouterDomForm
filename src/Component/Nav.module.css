@@ -1,0 +1,73 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&family=Parisienne&family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+    --clr-brown: #7f6965;
+    --clr-dark-zeal: #28221e;
+    --clr-alice: aliceBlue;
+    --section-bg-color: #f0f8ff;
+}
+
+body {
+  font-size: Poppins;
+  background-color: var(--section-bg-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 2rem; */
+  padding-left: 2rem;
+  background-color: var(--clr-dark-zeal);
+  font-family: Roboto;
+  color: var(--clr-alice);
+  overflow: hidden;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.logo {
+  margin-top: 0.5rem;
+  font-size: 2rem;
+  font-family: Ephesis;
+}
+
+.links {
+  width: 10%;
+  margin-top: 0.7rem;
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  /* margin-top: 1rem; */
+  transform: translate(0, 45%);
+  width: 15%;
+}
+
+.list {
+  /* display: flex; */
+  margin-top: 0.7rem;
+}
+
+.listBtn{
+    padding: 0.7rem 1.2rem;
+    transform: translate(0, -30%);
+    background-color: #9370db;
+    color: var(--clr-alice);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    border: unset;
+}
+
+.PostList{
+  padding: 2rem;
+}
+
+
