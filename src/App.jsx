@@ -13,7 +13,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Edit from "./Component/Edit";
 import Post from "./Pages/Post";
-// import { patchAction } from "./Component/Edit";
+import { PatchAction } from "./Component/Edit";
 // import { patchAction } from "./Pages/PostList";
 
 const router = createBrowserRouter([
@@ -36,9 +36,9 @@ const router = createBrowserRouter([
             action: actionData,
           },
           // {
-          //   path: "/edit-list",
-          //   element: <PostList />,
-          //   action: patchAction,
+          //   path: "/edit-post",
+          //   element: <Edit />,
+          //   action: PatchAction,
           // },
         ],
       },
@@ -52,8 +52,8 @@ const router = createBrowserRouter([
 
 function App() {
   <ToastContainer
-    position="top-left" // Set the position to top-left
-    autoClose={5000} // Adjust other options as needed
+    position="top-left" 
+    autoClose={5000} 
   />;
 
   return (

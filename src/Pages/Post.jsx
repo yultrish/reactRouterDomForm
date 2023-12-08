@@ -5,12 +5,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Post = ({ post }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [author, setAuthor] = useState(post.author);
   const [summary, setSummary] = useState(post.summary);
+  const [isDeleting, setDeleting] = useState(false);
 
   const handleClose = () => {
     setShow(false);
@@ -21,26 +24,28 @@ const Post = ({ post }) => {
   };
 
   const deletePost = async (postID) => {
-    let confirmed = window.confirm("Are you sure you want to delete it?");
-    if (confirmed) {
-      try {
-        await fetch(`http://localhost:3020/post/${postID}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+    setDeleting(true);
+    try {
+      await fetch(`http://localhost:3020/post/${postID}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setTimeout(() => {
         navigate("/");
-      } catch (error) {
-        console.error("Error deleting post:", error);
-      }
+      }, 500);
+    } catch (error) {
+      console.error("Error deleting post:", error);
+      setDeleting(false); 
     }
   };
 
   const editPost = async (postID) => {
-    let confirmed = window.confirm("Are you sure you want to edit it?");
-    if (confirmed) {
+    // let confirmed = confirm(`Are you sure you want to edit post with ${postID}`);
+    // if (confirmed) {
       try {
+      
         const response = await fetch(`http://localhost:3020/post/${postID}`, {
           method: "PATCH",
           headers: {
@@ -53,7 +58,8 @@ const Post = ({ post }) => {
         });
 
         if (response.ok) {
-          console.log("Post edited successfully");
+          // console.log("Post edited successfully");
+          toast.success("item updated successfully")
           handleClose();
         } else {
           console.error("Failed to edit post");
@@ -61,20 +67,25 @@ const Post = ({ post }) => {
       } catch (error) {
         console.error("Error editing post:", error);
       }
-    }
+    // }
+  };
+
+  
+  const cardStyle = {
+    border: "1px solid aliceBlue",
+    width: "100%",
+    height: "250px",
+    boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+    backgroundColor: "aliceblue",
+    opacity: isDeleting ? 0 : 1, 
+    transition: "opacity 0.5s ease-out", 
   };
 
   return (
     <>
       <div
-        style={{
-          border: "1px solid aliceBlue",
-          width: "100%",
-          height: "250px",
-          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          backgroundColor: "aliceblue",
-        }}
-        className="card"
+       style={cardStyle}
+      
       >
         <RiDeleteBin5Line size={30} onClick={() => deletePost(post.id)} />
         <HiOutlinePencilAlt onClick={handleShow} />

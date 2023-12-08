@@ -55,60 +55,81 @@ export default function Edit() {
   );
 }
 
-// export async function patchAction({ request, postID }) {
-//   <Post/>
-//   let formData = await request.formData();
-//   let author = formData.get("author");
-//   let summary = formData.get("summary");
+// PatchAction.jsx
+export async function PatchAction({ postId }) {
+  if (!postId) {
+    console.error("Post ID is undefined");
+    return null;
+  }
 
-//   let confirmed = window.confirm("Are you sure you want to edit it?");
-//   if (confirmed) {
-//     try {
-//       const response = await fetch(`http://localhost:3020/post/${postID}`, {
-//         method: "PATCH",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           author,
-//           summary,
-//         }),
-//       });
+  try {
+    // Fetch the post data using postId
+    const postResponse = await fetch(`http://localhost:3020/post/${postId}`);
+    const postData = await postResponse.json();
 
-//       if (response.ok) {
-//         console.log("Post edited successfully");
-//         return redirect("/")
-//         // Optionally, you can perform any actions needed after a successful edit
-//         // For example, update state or trigger a re-render
-//       } else {
-//         console.error("Failed to edit post");
-//       }
-//     } catch (error) {
-//       console.error("Error editing post:", error);
-//     }
-//   }
-// }
+    if (!postResponse.ok || !postData) {
+      console.error("Failed to fetch post data");
+      return null;
+    }
+
+    const post = postData; // Adjust the structure if needed
+
+    // Extract author and summary from the post data
+    const { author, summary } = post;
+
+    // Your existing logic for editing the post
+    let confirmed = window.confirm("Are you sure you want to edit it?");
+    if (confirmed) {
+      const response = await fetch(`http://localhost:3020/post/${postId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          author,
+          summary,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Post edited successfully");
+        // Optionally, you can perform any actions needed after a successful edit
+        // For example, update state or trigger a re-render
+      } else {
+        console.error("Failed to edit post");
+      }
+    }
+  } catch (error) {
+    console.error("Error editing post:", error);
+  }
+
+  return null;
+}
 
 
-// const formStyle = {
-//   width: "100%",
-//   maxWidth: "400px",
-//   margin: "0 auto",
-// };
 
-// const inputStyle = {
-//   width: "100%",
-//   marginBottom: "10px",
-//   padding: "8px",
-//   borderRadius: "4px",
-//   border: "1px solid",
-// };
+// patchAction({ post });
 
-// const buttonStyle = {
-//   backgroundColor: "#007bff",
-//   color: "#fff",
-//   padding: "10px 20px",
-//   cursor: "pointer",
-//   borderRadius: "7px",
-//   border: "none",
-// };
+
+const formStyle = {
+  width: "100%",
+  maxWidth: "400px",
+  margin: "0 auto",
+};
+
+const inputStyle = {
+  width: "100%",
+  marginBottom: "10px",
+  padding: "8px",
+  borderRadius: "4px",
+  border: "1px solid",
+};
+
+const buttonStyle = {
+  backgroundColor: "#007bff",
+  color: "#fff",
+  padding: "10px 20px",
+  cursor: "pointer",
+  borderRadius: "7px",
+  border: "none",
+};

@@ -7,6 +7,8 @@ import Button from "react-bootstrap/Button";
 // import { Form } from "react-bootstrap";
 import { Form } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+// import Edit from "../Component/Edit";
+// import { PatchAction } from "../Component/Edit";
 
 export default function PostList() {
   const navigate = useNavigate();
@@ -36,6 +38,7 @@ export default function PostList() {
         {posts.map((post) => {
           return <Post key={post.id} post={post} />;
         })}
+
       </div>
       {/* <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
