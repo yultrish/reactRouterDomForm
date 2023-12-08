@@ -3,10 +3,11 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+// import { Form } from "react-bootstrap";
+import { Form } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
-const Post = ({ post }) => {
+export default function Post({ post }) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [author, setAuthor] = useState(post.author);
@@ -17,7 +18,9 @@ const Post = ({ post }) => {
   };
 
   const handleShow = () => {
-    setShow(true);
+    // navigate("/edit-list")
+    console.log(post.id)
+    setShow(true)
   };
 
   const deletePost = async (postID) => {
@@ -37,32 +40,35 @@ const Post = ({ post }) => {
     }
   };
 
-  const editPost = async (postID) => {
-    let confirmed = window.confirm("Are you sure you want to edit it?");
-    if (confirmed) {
-      try {
-        const response = await fetch(`http://localhost:3020/post/${postID}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            author,
-            summary,
-          }),
-        });
+  // const editPost = async (postID) => {
+  //   console.log(postID)
+  //   let confirmed = window.confirm("Are you sure you want to edit it?");
+  //   if (confirmed) {
+  //     try {
+  //       const response = await fetch(`http://localhost:3020/post/${postID}`, {
+  //         method: "PATCH",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           author,
+  //           summary,
+  //         }),
+  //       });
 
-        if (response.ok) {
-          console.log("Post edited successfully");
-          handleClose();
-        } else {
-          console.error("Failed to edit post");
-        }
-      } catch (error) {
-        console.error("Error editing post:", error);
-      }
-    }
-  };
+  //       if (response.ok) {
+  //         console.log("Post edited successfully");
+  //         handleClose();
+  //         // Optionally, you can perform any actions needed after a successful edit
+  //         // For example, update state or trigger a re-render
+  //       } else {
+  //         console.error("Failed to edit post");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error editing post:", error);
+  //     }
+  //   }
+  // };
 
   return (
     <>
@@ -87,7 +93,7 @@ const Post = ({ post }) => {
             marginTop: "0.6rem",
           }}
         >
-          {author}
+          {post.author}
         </blockquote>
         <p
           style={{
@@ -98,7 +104,7 @@ const Post = ({ post }) => {
             textAlign: "center",
           }}
         >
-          {summary}
+          {post.summary}
         </p>
       </div>
 
@@ -136,8 +142,15 @@ const Post = ({ post }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+
+
+
+
+
+
     </>
   );
-};
+}
 
-export default Post;
+

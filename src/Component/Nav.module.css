@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Ephesis&family=Parisienne&family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&family=Parisienne&family=Poppins:wght@300&family=Roboto:wght@300&display=swap");
 
 * {
   margin: 0;
@@ -7,11 +6,11 @@
   box-sizing: border-box;
 }
 
-:root{
-    --clr-brown: #7f6965;
-    --clr-dark-zeal: #28221e;
-    --clr-alice: aliceBlue;
-    --section-bg-color: #f0f8ff;
+:root {
+  --clr-brown: #7f6965;
+  --clr-dark-zeal: #28221e;
+  --clr-alice: aliceBlue;
+  --section-bg-color: #f0f8ff;
 }
 
 body {
@@ -57,17 +56,15 @@ body {
   margin-top: 0.7rem;
 }
 
-.listBtn{
-    padding: 0.7rem 1.2rem;
-    transform: translate(0, -30%);
-    background-color: #9370db;
-    color: var(--clr-alice);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
-    border: unset;
+.listBtn {
+  padding: 0.7rem 1.2rem;
+  transform: translate(0, -30%);
+  background-color: #9370db;
+  color: var(--clr-alice);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: unset;
 }
 
-.PostList{
+.PostList {
   padding: 2rem;
 }
-
-
