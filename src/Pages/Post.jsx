@@ -59,7 +59,7 @@ const Post = ({ post }) => {
 
         if (response.ok) {
           // console.log("Post edited successfully");
-          toast.success("item updated successfully")
+          toast.success("post updated successfully")
           handleClose();
         } else {
           console.error("Failed to edit post");
